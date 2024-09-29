@@ -3,7 +3,7 @@ import CartItem from "./CartItem";
 
 function CartList({ onUpdateTotalItems }) {
     return (
-        <div>
+        <div style={{padding:'2rem'}}>
             {/* Mengoper onUpdateTotalItems ke CartItem */}
             <CartItem onUpdateTotalItems={onUpdateTotalItems} />
         </div>
