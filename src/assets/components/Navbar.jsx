@@ -1,13 +1,14 @@
-// Navbar.jsx
-import React from 'react';
+import React from "react";
 
-const Navbar = () => {
-  return (
-    <nav>
-      <h1>MyStore</h1>
-      <div>Cart</div>
-    </nav>
-  );
+const Navbar = ({ totalItems }) => {
+    return(
+        <nav>
+            <h2>MyStore</h2>
+            <div>
+                <p>Cart</p>
+                <span>{totalItems}</span>
+            </div>
+        </nav>
+    );
 };
-
 export default Navbar;
