@@ -1,11 +1,13 @@
-import React from 'react';
+import React from "react";
+import CartItem from "./CartItem";
 
-const CartList = () => {
-  return (
-    <div>
-      <h2>Keranjang Belanja Anda</h2>
-    </div>
-  );
-};
+function CartList({ onUpdateTotalItems }) {
+    return (
+        <div>
+            {/* Mengoper onUpdateTotalItems ke CartItem */}
+            <CartItem onUpdateTotalItems={onUpdateTotalItems} />
+        </div>
+    );
+}
 
 export default CartList;
