@@ -15,12 +15,32 @@ function CartItem({ onUpdateTotalItems }) {
             quantity: 1  // Inisialisasi jumlah setiap item menjadi 1
         }));
         setCartItems(itemsWithQuantity);
+
+        // Hitung total items dan update
+        const total = itemsWithQuantity.reduce((sum, item) => sum + item.quantity, 0);
+        onUpdateTotalItems(total); // Update total items di Navbar
     }
 
     useEffect(() => {
         getCartItem();
     }, []);
 
+    // Fungsi untuk memperbaharui perubahan quantity
+    const handleQuantityChange = (itemId, newQuantity) => {
+        setCartItems(prevItems => 
+            prevItems.map(item => 
+                item.id === itemId ? { ...item, quantity: newQuantity } : item
+            )
+        );
+    };
+
+    // Menghitung total items setiap kali cartItems berubah
+    useEffect(() => {
+        const total = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+        onUpdateTotalItems(total); // Update total items di Navbar
+    }, [cartItems, onUpdateTotalItems]);
+
+    
     return (
         <div>
             {cartItems.length === 0 ? <h1>Loading...</h1> : 
@@ -31,7 +51,11 @@ function CartItem({ onUpdateTotalItems }) {
                     <p>${item.price}</p>
 
                     <div style={{ width: '120px'}}>
-                        <Counter/>
+                        <Counter
+                        itemId={item.id} 
+                        quantity={item.quantity} 
+                        onQuantityChange={handleQuantityChange}
+                        />
                     </div>
                     
                     <div>
