@@ -12,10 +12,10 @@ function Counter({ itemId, quantity, onQuantityChange }) {
     };
 
     return (
-        <div>
-            <button onClick={decrement}>-</button>
-            <span>{quantity}</span>
-            <button onClick={increment}>+</button>
+        <div style={{display:'flex', justifyContent:'center', alignItems: 'center', border: '1px solid #E78F81', borderRadius:'10px',}}>
+            <button onClick={decrement} style={{backgroundColor:'transparent', border:'none', fontSize:'24pt'}}>-</button>
+            <span style={{padding:'20px'}}>{quantity}</span>
+            <button onClick={increment} style={{backgroundColor:'transparent', border:'none', fontSize:'24pt'}}>+</button>
         </div>
     );
 }
